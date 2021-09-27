@@ -39,6 +39,7 @@ class TaskListView(ListCreateAPIView):
 
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user).order_by('title')
+        #return Task.objects.all()
 
 
     def perform_create(self, serializer):

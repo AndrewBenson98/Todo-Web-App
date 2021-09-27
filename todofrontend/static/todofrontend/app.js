@@ -1,5 +1,7 @@
 
-var domain = 'http://127.0.0.1:8000/'
+//var domain = 'http://127.0.0.1:8000/'
+
+var domain ='https://arbenson-todo-app.herokuapp.com/'
 
 //This variable keeps track of the current item the user is editing so 
 //we know whether to use POST or PUT methods
@@ -9,8 +11,6 @@ var activeItem = null
 var csrftoken = null
 
 window.onload = function() {
-    
-    
     //Token Requiered by Django to post form data
     csrftoken = getCookie('csrftoken');
     buildList()

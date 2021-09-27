@@ -25,8 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') =='True')
+#DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'arbenson-todo-app.herokuapp.com']
+ALLOWED_HOSTS = ['arbenson-todo-app.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -125,6 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#STATICFILES_DIRS = ( os.path.join('static'), )
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -134,7 +137,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Crispy forms default
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-
+#REST Pagination
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 
 #Login redirect
