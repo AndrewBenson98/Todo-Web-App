@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import django_heroku
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-uh9^fr-r@##5at##hmsugdr@gio)-m=rv@0dt4=1*tf7&a71fo'
-
+#SECRET_KEY = 'django-insecure-uh9^fr-r@##5at##hmsugdr@gio)-m=rv@0dt4=1*tf7&a71fo'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE') =='True')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'arbenson-todo-app.herokuapp.com']
 
 
 # Application definition
@@ -144,3 +145,7 @@ REST_FRAMEWORK = {
 #Login redirect
 LOGIN_REDIRECT_URL ='todofrontend-list'
 LOGIN_URL = 'login'
+
+
+#Heroku deployment
+django_heroku.settings(locals())
